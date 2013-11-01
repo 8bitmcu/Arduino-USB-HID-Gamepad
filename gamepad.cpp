@@ -1,3 +1,19 @@
+/* 
+* -------------------------------------------------------------------------
+* Arduino Leonardo  -  USB HID Gamepad - using internal pullup resistors
+* -------------------------------------------------------------------------
+* Copyright Vincent Morneault      October - November 2013
+* VincentMorneault@gmail.com
+* This code module is licensed public domain
+* -------------------------------------------------------------------------
+* Uses modified HID.cpp and USBAPI.h provided by "That Guy"
+* at http://www.imaginaryindustries.com/blog/?p=80
+*
+* Based off code from Kevin Peat
+* at https://github.com/devonshire/arduino-joystick
+* -------------------------------------------------------------------------
+*/
+
 const int PIN_BUT_A = 2;
 const int PIN_BUT_B = 3;
 const int PIN_BUT_SELECT = 4;
@@ -7,8 +23,6 @@ const int PIN_BUT_UP = 6;
 const int PIN_BUT_DOWN = 7;
 const int PIN_BUT_LEFT = 8;
 const int PIN_BUT_RIGHT = 9;
-
-
 
 
 class Button {
@@ -49,8 +63,7 @@ Button *up, *down, *left, *right, *a, *b, *select, *start;
 
 JoyState_t joySt;
 
-void setup()
-{
+void setup() {
   up = new Button(PIN_BUT_UP);
   down = new Button(PIN_BUT_DOWN);
   left = new Button(PIN_BUT_LEFT);
@@ -74,8 +87,7 @@ void setup()
   joySt.buttons = 0;
 }
 
-void loop()
-{
+void loop() {
   if(up->hasChanged()) {
     joySt.yAxis = up->isPressed() ? 255 : 127;
   }
@@ -108,6 +120,5 @@ void loop()
 
   }
 
-  // Send joystick state
   Joystick.setState(&joySt);
 }
