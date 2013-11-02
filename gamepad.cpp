@@ -91,12 +91,12 @@ void loop() {
   boolean anyChanged = false;
   
   if(up->hasChanged()) {
-    joySt.yAxis = down->isPressed() ?  0 : 127;
+    joySt.yAxis = up->isPressed() ?  0 : 127;
     anyChanged = true;
   }
 
   if(down->hasChanged()) {
-    joySt.yAxis = up->isPressed() ? 255 : 127;
+    joySt.yAxis = down->isPressed() ? 255 : 127;
     anyChanged = true;
   }
 
@@ -131,7 +131,6 @@ void loop() {
   }
   
   if(anyChanged) {
-    anyChanged = false;
     Joystick.setState(&joySt);
     delay(10);
   }
