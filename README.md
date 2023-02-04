@@ -1,3 +1,3 @@
-# gbpi
+# Arduino-USB-HID-Gamepad
 
-This project re-uses the gameboy input PCB and presents it as an HID game controller to the host using an Arduino
+A simple Arduino HID library to capture button presses from a nes-like gamepad
